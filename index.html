@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netrunner Mobile Computer Repair | Cypress, TX (77429)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            black: '#04070e',
+                            dark: '#080d1a',
+                            card: '#0d1527',
+                            border: '#1a2744',
+                            cyan: '#00f3ff',
+                            mint: '#05ffa1',
+                            blue: '#0066ff',
+                            textMuted: '#94a3b8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                        mono: ['Share Tech Mono', 'monospace']
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 25px -5px rgba(0, 243, 255, 0.45)',
+                        'neon-mint': '0 0 25px -5px rgba(5, 255, 161, 0.45)',
+                        'glow-sm': '0 0 12px rgba(0, 243, 255, 0.35)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Cyber Circuit Board Background Grids */
+        .pcb-grid {
+            background-color: #04070e;
+            background-image: 
+                radial-gradient(rgba(0, 243, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(to right, rgba(26, 39, 68, 0.25) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(26, 39, 68, 0.25) 1px, transparent 1px);
+            background-size: 32px 32px, 64px 64px, 64px 64px;
+        }
+
+        .cyber-border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(#0d1527, #0d1527) padding-box,
+                        linear-gradient(135deg, rgba(0,243,255,0.7), rgba(5,255,161,0.2), rgba(0,102,255,0.5)) border-box;
+        }
+
+        .cyber-glow-text {
+            text-shadow: 0 0 16px rgba(0, 243, 255, 0.6);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #04070e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1a2744;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
+    </style>
+</head>
+<body class="bg-cyber-black text-slate-100 font-sans pcb-grid min-h-screen selection:bg-cyber-cyan selection:text-black">
+
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-cyber-black/85 border-b border-cyber-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo Mark -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full cyber-border-gradient flex items-center justify-center p-0.5 shadow-neon-cyan/40">
+                    <div class="w-full h-full bg-cyber-dark rounded-full flex items-center justify-center relative overflow-hidden">
+                        <span class="font-tech font-black text-xl text-cyber-cyan group-hover:scale-110 transition-transform">N</span>
+                        <div class="absolute bottom-1 w-2 h-0.5 bg-cyber-mint animate-pulse"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="font-tech font-black text-lg sm:text-xl tracking-wider text-white flex items-center gap-1">
+                        NETRUNNER<span class="text-cyber-cyan text-xs font-mono font-normal px-1.5 py-0.5 rounded border border-cyber-cyan/40 bg-cyber-cyan/10">LLC</span>
+                    </div>
+                    <div class="text-[10px] sm:text-xs font-mono uppercase text-cyber-mint tracking-widest -mt-1">Mobile Computer Repair</div>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-mono text-sm tracking-wide">
+                <a href="#services" class="text-slate-300 hover:text-cyber-cyan transition-colors">/SERVICES</a>
+                <a href="#pricing" class="text-slate-300 hover:text-cyber-cyan transition-colors">/PRICING</a>
+                <a href="#coverage" class="text-slate-300 hover:text-cyber-cyan transition-colors">/COVERAGE</a>
+                <a href="#calculator" class="text-slate-300 hover:text-cyber-cyan transition-colors">/CALCULATOR</a>
+                <a href="#contact" class="text-slate-300 hover:text-cyber-cyan transition-colors">/CONTACT</a>
+            </nav>
+
+            <!-- Quick Action CTA -->
+            <div class="flex items-center gap-3">
+                <a href="tel:2815550199" class="hidden sm:inline-flex items-center gap-2 text-xs font-mono px-3 py-2 rounded-lg border border-cyber-border bg-cyber-dark hover:border-cyber-cyan transition-all text-slate-300 hover:text-white">
+                    <svg class="w-3.5 h-3.5 text-cyber-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    <span>(281) 555-0199</span>
+                </a>
+                <a href="#contact" class="inline-flex items-center gap-2 text-xs font-tech font-bold uppercase tracking-wider px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyber-cyan to-cyber-mint text-cyber-black hover:opacity-90 shadow-neon-cyan transition-all">
+                    <span>Book Repair</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-12 pb-20 md:py-24 overflow-hidden border-b border-cyber-border/60">
+        <!-- Ambient radial glow behind hero -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyber-cyan/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Copy -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyber-cyan/40 bg-cyber-cyan/10 text-cyber-cyan font-mono text-xs tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-cyber-mint animate-ping"></span>
+                        SERVING CYPRESS & NW HOUSTON • ZIP 77429 & 77433
+                    </div>
+
+                    <h1 class="font-tech text-4xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-tight">
+                        ON-SITE TECH SUPPORT. <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-teal-200 to-cyber-mint cyber-glow-text">WE COME TO YOUR DOOR.</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        Skip disconnecting heavy cables, dealing with crowded stores, and waiting weeks in line. <strong class="text-white font-semibold">Netrunner</strong> delivers expert diagnostics, hardware upgrades, malware cleans, and high-performance custom builds straight to your home or office.
+                    </p>
+
+                    <!-- Trust Metric Badges -->
+                    <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg mx-auto lg:mx-0">
+                        <div class="p-3 rounded-xl bg-cyber-card border border-cyber-border text-center">
+                            <div class="font-tech text-xl font-bold text-cyber-cyan">$69</div>
+                            <div class="text-[11px] text-slate-400 font-mono leading-tight mt-0.5">Diagnostic Credited Toward Repair</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-cyber-card border border-cyber-border text-center">
+                            <div class="font-tech text-xl font-bold text-cyber-mint">$0</div>
+                            <div class="text-[11px] text-slate-400 font-mono leading-tight mt-0.5">Travel Fee Inside 77429 / 77433</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-cyber-card border border-cyber-border text-center">
+                            <div class="font-tech text-xl font-bold text-white">Same-Day</div>
+                            <div class="text-[11px] text-slate-400 font-mono leading-tight mt-0.5">Mobile Diagnostic Windows</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button Group -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#contact" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-tech font-bold uppercase tracking-wider text-cyber-black bg-gradient-to-r from-cyber-cyan to-cyber-mint hover:shadow-neon-cyan transition-all text-center">
+                            Schedule A Dispatch
+                        </a>
+                        <a href="#pricing" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-mono text-sm tracking-wider text-slate-200 border border-cyber-border bg-cyber-card/80 hover:border-cyber-cyan transition-all text-center">
+                            View Pricing Menu ↓
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero: Stylized Cyber Badge Art based on the Logo -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 sm:w-88 md:w-96 aspect-square">
+                        <!-- Outer PCB Ring & Pulsing Light -->
+                        <div class="absolute inset-0 rounded-full border-2 border-cyber-cyan/30 animate-[spin_24s_linear_infinite] pointer-events-none"></div>
+                        <div class="absolute -inset-3 rounded-full border border-dashed border-cyber-mint/30 pointer-events-none"></div>
+
+                        <!-- Badge Container -->
+                        <div class="w-full h-full rounded-full p-2.5 cyber-border-gradient shadow-neon-cyan relative flex items-center justify-center overflow-hidden bg-cyber-dark">
+                            <!-- SVG Badge Representation matching the Logo -->
+                            <svg class="w-full h-full drop-shadow-2xl" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#00f3ff"/>
+                                        <stop offset="100%" stop-color="#05ffa1"/>
+                                    </linearGradient>
+                                    <radialGradient id="badgeCore" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#0e1a38"/>
+                                        <stop offset="85%" stop-color="#050a14"/>
+                                        <stop offset="100%" stop-color="#020408"/>
+                                    </radialGradient>
+                                </defs>
+
+                                <!-- Badge Circular Base -->
+                                <circle cx="200" cy="200" r="190" fill="url(#badgeCore)" stroke="#00f3ff" stroke-width="4"/>
+                                <circle cx="200" cy="200" r="172" stroke="#00f3ff" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.6"/>
+
+                                <!-- Circuit Traces on PCB -->
+                                <path d="M 60 160 H 110 L 140 120 V 70" stroke="#00f3ff" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+                                <circle cx="140" cy="70" r="4" fill="#00f3ff" opacity="0.8"/>
+                                <circle cx="60" cy="160" r="4" fill="#05ffa1" opacity="0.8"/>
+
+                                <path d="M 340 160 H 290 L 260 120 V 70" stroke="#05ffa1" stroke-width="2" opacity="0.4" stroke-linecap="round"/>
+                                <circle cx="260" cy="70" r="4" fill="#05ffa1" opacity="0.8"/>
+                                <circle cx="340" cy="160" r="4" fill="#00f3ff" opacity="0.8"/>
+
+                                <path d="M 80 270 L 120 270 L 150 310" stroke="#00f3ff" stroke-width="2" opacity="0.3"/>
+                                <path d="M 320 270 L 280 270 L 250 310" stroke="#05ffa1" stroke-width="2" opacity="0.3"/>
+
+                                <!-- Stylized Tech Mobile Van Graphic -->
+                                <g transform="translate(65, 125)">
+                                    <!-- Van Body -->
+                                    <path d="M 15 85 L 35 40 H 170 C 185 40 200 50 205 65 L 220 85 L 245 92 C 255 96 260 105 260 115 V 135 H 15 V 85 Z" fill="#0a1426" stroke="#00f3ff" stroke-width="3"/>
+                                    <!-- Windshield & Front Glass -->
+                                    <path d="M 180 50 L 200 68 L 215 85 H 175 V 50 H 180 Z" fill="#00f3ff" opacity="0.35"/>
+                                    <!-- Side Door Accent with 'R' Logo -->
+                                    <rect x="75" y="55" width="55" height="55" rx="4" fill="#0f1f3d" stroke="#00f3ff" stroke-width="1.5"/>
+                                    <text x="92" y="93" font-family="Orbitron" font-size="28" font-weight="900" fill="#05ffa1">R</text>
+
+                                    <!-- Wheels -->
+                                    <circle cx="65" cy="135" r="22" fill="#04070e" stroke="#00f3ff" stroke-width="3"/>
+                                    <circle cx="65" cy="135" r="9" fill="#05ffa1"/>
+                                    <circle cx="210" cy="135" r="22" fill="#04070e" stroke="#00f3ff" stroke-width="3"/>
+                                    <circle cx="210" cy="135" r="9" fill="#05ffa1"/>
+
+                                    <!-- Speed Circuit Trails behind Van -->
+                                    <line x1="-30" y1="70" x2="10" y2="70" stroke="#00f3ff" stroke-width="2" stroke-dasharray="8 6"/>
+                                    <line x1="-45" y1="90" x2="5" y2="90" stroke="#05ffa1" stroke-width="3" stroke-dasharray="12 4"/>
+                                    <line x1="-25" y1="110" x2="8" y2="110" stroke="#00f3ff" stroke-width="2" stroke-dasharray="6 6"/>
+                                </g>
+
+                                <!-- Cyber Tech Wrench Silhouette -->
+                                <path d="M 285 105 L 315 135 M 310 100 L 280 130" stroke="#05ffa1" stroke-width="6" stroke-linecap="round"/>
+
+                                <!-- Brand Text Banner Overlay inside Emblem -->
+                                <rect x="35" y="275" width="330" height="42" rx="8" fill="#080e1d" stroke="#00f3ff" stroke-width="2"/>
+                                <text x="200" y="304" text-anchor="middle" font-family="Orbitron" font-size="21" font-weight="900" fill="url(#cyanGrad)" letter-spacing="3">NETRUNNER</text>
+                                <text x="200" y="340" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="2">MOBILE COMPUTER REPAIR</text>
+                                <text x="200" y="362" text-anchor="middle" font-family="Share Tech Mono" font-size="10" fill="#05ffa1">CYPRESS, TX • 77429</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="coverage" class="py-12 bg-cyber-dark/60 border-b border-cyber-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Advantage 1 -->
+                <div class="flex items-start gap-4 p-5 rounded-xl bg-cyber-card border border-cyber-border">
+                    <div class="w-12 h-12 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center shrink-0 text-cyber-cyan">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-tech text-base font-bold text-white uppercase">Zero Travel Fee</h4>
+                        <p class="text-xs text-slate-400 font-mono mt-1 leading-relaxed">No added dispatch charges within Cypress ZIP codes 77429 & 77433. Extended dispatch available for Katy & Tomball.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="flex items-start gap-4 p-5 rounded-xl bg-cyber-card border border-cyber-border">
+                    <div class="w-12 h-12 rounded-lg bg-cyber-mint/10 border border-cyber-mint/30 flex items-center justify-center shrink-0 text-cyber-mint">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-tech text-base font-bold text-white uppercase">Diagnostic Credit</h4>
+                        <p class="text-xs text-slate-400 font-mono mt-1 leading-relaxed">Our $69 initial diagnostic is 100% credited toward your labor cost once you approve the fix. No surprise charges.</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="flex items-start gap-4 p-5 rounded-xl bg-cyber-card border border-cyber-border">
+                    <div class="w-12 h-12 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center shrink-0 text-cyber-cyan">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-tech text-base font-bold text-white uppercase">Transparent Flat Rates</h4>
+                        <p class="text-xs text-slate-400 font-mono mt-1 leading-relaxed">Predetermined flat rates on malware cleanup, OS installations, and SSD upgrades so you know the price before work begins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-cyber-cyan font-mono text-xs tracking-widest uppercase bg-cyber-cyan/10 px-3 py-1 rounded-full border border-cyber-cyan/30">Upfront Flat-Rate Menu</span>
+                <h2 class="font-tech text-3xl sm:text-4xl font-black mt-3 uppercase tracking-wide">Standard Repair & Service Rates</h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">Transparent mobile repair pricing built to outperform big-box electronics stores and keep Cypress computers running at peak velocity.</p>
+                
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+                    <button onclick="filterServices('all')" id="filter-all" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono tracking-wider transition-all bg-cyber-cyan text-cyber-black font-bold">ALL SERVICES</button>
+                    <button onclick="filterServices('quick')" id="filter-quick" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono tracking-wider transition-all bg-cyber-card border border-cyber-border text-slate-300 hover:border-cyber-cyan">SOFTWARE & OS</button>
+                    <button onclick="filterServices('hardware')" id="filter-hardware" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono tracking-wider transition-all bg-cyber-card border border-cyber-border text-slate-300 hover:border-cyber-cyan">HARDWARE & BUILDS</button>
+                    <button onclick="filterServices('labor')" id="filter-labor" class="filter-btn px-4 py-2 rounded-lg text-xs font-mono tracking-wider transition-all bg-cyber-card border border-cyber-border text-slate-300 hover:border-cyber-cyan">DIAGNOSTICS & HOURLY</button>
+                </div>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div id="service-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Service 1: Mobile Diagnostic -->
+                <div class="service-card group rounded-2xl bg-cyber-card border border-cyber-border hover:border-cyber-cyan p-6 transition-all duration-300 flex flex-col justify-between" data-category="labor">
+                    <div>
+                        <div class="flex items-start justify-between">
+                            <span class="text-xs font-mono text-cyber-cyan px-2 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 uppercase">Service Call</span>
+                            <div class="text-right">
+                                <span class="font-tech text-3xl font-black text-white">$69</span>
+                                <span class="text-[11px] font-mono text-slate-400 block -mt-1">flat diagnostic</span>
+                            </div>
+                        </div>
+                        <h3 class="font-tech text-lg font-bold text-white mt-4 group-hover:text-cyber-cyan transition-colors">Mobile Diagnostic & Assessment</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Complete hardware/software evaluation at your location. Pinpoint motherboard faults, bluescreens, failed boot drives, or power issues.
+                        </p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> 100% credited toward repair labor</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Detailed component health report</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Zero travel fee in 77429/77433</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cyber-border/80 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-cyber-mint">Cypress Shop Baseline: ~$110</span>
+                        <a href="#contact" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1">Select →</a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Hourly Labor -->
+                <div class="service-card group rounded-2xl bg-cyber-card border border-cyber-border hover:border-cyber-cyan p-6 transition-all duration-300 flex flex-col justify-between" data-category="labor">
+                    <div>
+                        <div class="flex items-start justify-between">
+                            <span class="text-xs font-mono text-slate-300 px-2 py-0.5 rounded bg-cyber-border uppercase">On-Site Labor</span>
+                            <div class="text-right">
+                                <span class="font-tech text-3xl font-black text-white">$89</span>
+                                <span class="text-[11px] font-mono text-slate-400 block -mt-1">per hour</span>
+                            </div>
+                        </div>
+                        <h3 class="font-tech text-lg font-bold text-white mt-4 group-hover:text-cyber-cyan transition-colors">Standard On-Site Tech Labor</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            For complex, multi-stage troubleshooting, custom workstation networking, printer integration, and unmetered assistance.
+                        </p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> 1-hour minimum charge</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Home/small-office network setup</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Billed in transparent 15-min increments</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cyber-border/80 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-cyber-mint">Local Baseline: $100–$130/hr</span>
+                        <a href="#contact" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1">Select →</a>
+                    </div>
+                </div>
+
+                <!-- Service 3: Virus & Malware Clean-Up -->
+                <div class="service-card group rounded-2xl bg-cyber-card border border-cyber-border hover:border-cyber-mint p-6 transition-all duration-300 flex flex-col justify-between" data-category="quick">
+                    <div>
+                        <div class="flex items-start justify-between">
+                            <span class="text-xs font-mono text-cyber-mint px-2 py-0.5 rounded bg-cyber-mint/10 border border-cyber-mint/30 uppercase">Popular</span>
+                            <div class="text-right">
+                                <span class="font-tech text-3xl font-black text-white">$99</span>
+                                <span class="text-[11px] font-mono text-slate-400 block -mt-1">flat fee</span>
+                            </div>
+                        </div>
+                        <h3 class="font-tech text-lg font-bold text-white mt-4 group-hover:text-cyber-mint transition-colors">Virus, Spyware & Bloatware Cleanup</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Eradicate malware, rogue crypto-miners, and persistent adware without wiping your critical personal files.
+                        </p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Deep rootkit & trojan purge</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Browser hijacker & ad removal</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Security hardening & antivirus audit</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cyber-border/80 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-cyber-mint">Big Box Rate: $149.99</span>
+                        <a href="#contact" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1">Select →</a>
+                    </div>
+                </div>
+
+                <!-- Service 4: OS Clean Install -->
+                <div class="service-card group rounded-2xl bg-cyber-card border border-cyber-border hover:border-cyber-cyan p-6 transition-all duration-300 flex flex-col justify-between" data-category="quick">
+                    <div>
+                        <div class="flex items-start justify-between">
+                            <span class="text-xs font-mono text-slate-300 px-2 py-0.5 rounded bg-cyber-border uppercase">System Reset</span>
+                            <div class="text-right">
+                                <span class="font-tech text-3xl font-black text-white">$119</span>
+                                <span class="text-[11px] font-mono text-slate-400 block -mt-1">flat fee</span>
+                            </div>
+                        </div>
+                        <h3 class="font-tech text-lg font-bold text-white mt-4 group-hover:text-cyber-cyan transition-colors">OS Clean Install & Optimization</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Complete refresh to restore day-one speed. Fresh installation of Windows 11/10 or Linux, OEM firmware, and performance tuning.
+                        </p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Fresh OS install & official activation</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Latest manufacturer chipset & GPU drivers</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Telemetry debloat & startup optimization</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cyber-border/80 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-cyber-mint">Big Box Rate: $149.99</span>
+                        <a href="#contact" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1">Select →</a>
+                    </div>
+                </div>
+
+                <!-- Service 5: Hardware Upgrades -->
+                <div class="service-card group rounded-2xl bg-cyber-card border border-cyber-border hover:border-cyber-cyan p-6 transition-all duration-300 flex flex-col justify-between" data-category="hardware">
+                    <div>
+                        <div class="flex items-start justify-between">
+                            <span class="text-xs font-mono text-slate-300 px-2 py-0.5 rounded bg-cyber-border uppercase">Speed Boost</span>
+                            <div class="text-right">
+                                <span class="font-tech text-3xl font-black text-white">$79</span>
+                                <span class="text-[11px] font-mono text-slate-400 block -mt-1">flat labor + parts</span>
+                            </div>
+                        </div>
+                        <h3 class="font-tech text-lg font-bold text-white mt-4 group-hover:text-cyber-cyan transition-colors">Hardware Upgrades & Swaps</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Upgrade that slow mechanical hard drive to a blazing fast NVMe SSD, expand RAM, or replace failing power supply units.
+                        </p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> NVMe / 2.5" SSD installation & 1:1 drive clone</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> RAM, GPU, CPU cooler, or PSU replacement</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Dust removal and thermal re-paste</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cyber-border/80 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-cyber-mint">Local Baseline: $90–$120</span>
+                        <a href="#contact" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1">Select →</a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Data Migration -->
+                <div class="service-card group rounded-2xl bg-cyber-card border border-cyber-border hover:border-cyber-cyan p-6 transition-all duration-300 flex flex-col justify-between" data-category="quick">
+                    <div>
+                        <div class="flex items-start justify-between">
+                            <span class="text-xs font-mono text-slate-300 px-2 py-0.5 rounded bg-cyber-border uppercase">File Safety</span>
+                            <div class="text-right">
+                                <span class="font-tech text-3xl font-black text-white">$89</span>
+                                <span class="text-[11px] font-mono text-slate-400 block -mt-1">flat rate</span>
+                            </div>
+                        </div>
+                        <h3 class="font-tech text-lg font-bold text-white mt-4 group-hover:text-cyber-cyan transition-colors">Data Migration & Secure Backup</h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Bought a new PC? We safely extract photos, documents, browser bookmarks, and files from your legacy machine and transfer them over.
+                        </p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-300 font-mono">
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Migration for drives up to 500GB</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Outlook email & bookmark transfer</li>
+                            <li class="flex items-center gap-2"><span class="text-cyber-mint font-bold">✓</span> Cloud or external drive backup configuration</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-cyber-border/80 flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-cyber-mint">Big Box Rate: $120–$149</span>
+                        <a href="#contact" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1">Select →</a>
+                    </div>
+                </div>
+
+                <!-- Service 7: Custom Desktop Build -->
+                <div class="service-card group rounded-2xl bg-cyber-card border border-cyber-border hover:border-cyber-cyan p-6 transition-all duration-300 flex flex-col justify-between md:col-span-2 lg:col-span-3" data-category="hardware">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                        <div class="lg:col-span-8">
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-mono text-cyber-cyan px-2.5 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 uppercase">Gaming & Workstations</span>
+                                <span class="text-xs font-mono text-slate-400">Complete Custom Build Service</span>
+                            </div>
+                            <h3 class="font-tech text-2xl font-black text-white mt-2 group-hover:text-cyber-cyan transition-colors">Custom Gaming & Workstation Assembly</h3>
+                            <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                                Ordered parts from Micro Center or online? Let a certified technician build your dream rig. Full physical assembly, meticulous rear cable channeling, motherboard BIOS flash, XMP/EXPO memory timing profiling, and full thermal stress testing.
+                            </p>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 text-xs font-mono text-slate-300">
+                                <div class="flex items-center gap-1.5"><span class="text-cyber-mint font-bold">✓</span> Clean cable comb routing</div>
+                                <div class="flex items-center gap-1.5"><span class="text-cyber-mint font-bold">✓</span> AIO Liquid cooler mount</div>
+                                <div class="flex items-center gap-1.5"><span class="text-cyber-mint font-bold">✓</span> BIOS update & EXPO setup</div>
+                                <div class="flex items-center gap-1.5"><span class="text-cyber-mint font-bold">✓</span> 2-Hour Stress Test</div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-4 flex flex-col items-start lg:items-end justify-center border-t lg:border-t-0 lg:border-l border-cyber-border pt-4 lg:pt-0 lg:pl-6">
+                            <span class="font-tech text-4xl font-black text-white">$169</span>
+                            <span class="text-xs font-mono text-slate-400 mt-0.5">complete flat assembly</span>
+                            <a href="#contact" class="mt-4 px-6 py-2.5 rounded-lg bg-cyber-cyan text-cyber-black font-tech font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all">
+                                Book Custom Build
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="py-16 bg-cyber-dark/80 border-y border-cyber-border relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="cyber-border-gradient rounded-3xl p-6 sm:p-10 bg-cyber-card">
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <span class="text-cyber-mint font-mono text-xs tracking-widest uppercase">Estimate Tool</span>
+                    <h3 class="font-tech text-2xl sm:text-3xl font-black text-white mt-1">Instant Service Cost Estimator</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-1">Select the services you need to calculate an instant on-site estimate.</p>
+                </div>
+
+                <!-- Calculator Form Items -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="calc-options">
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-cyber-border bg-cyber-dark/60 hover:border-cyber-cyan/50 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" value="69" class="calc-checkbox w-4 h-4 rounded text-cyber-cyan focus:ring-0 bg-cyber-black border-cyber-border" onchange="calculateTotal()">
+                            <span class="text-xs sm:text-sm text-slate-200 font-medium">Diagnostic / Trip Call</span>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-cyber-cyan">$69</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-cyber-border bg-cyber-dark/60 hover:border-cyber-cyan/50 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" value="99" class="calc-checkbox w-4 h-4 rounded text-cyber-cyan focus:ring-0 bg-cyber-black border-cyber-border" onchange="calculateTotal()">
+                            <span class="text-xs sm:text-sm text-slate-200 font-medium">Malware & Virus Clean</span>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-cyber-cyan">$99</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-cyber-border bg-cyber-dark/60 hover:border-cyber-cyan/50 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" value="119" class="calc-checkbox w-4 h-4 rounded text-cyber-cyan focus:ring-0 bg-cyber-black border-cyber-border" onchange="calculateTotal()">
+                            <span class="text-xs sm:text-sm text-slate-200 font-medium">Fresh OS Install + Drivers</span>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-cyber-cyan">$119</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-cyber-border bg-cyber-dark/60 hover:border-cyber-cyan/50 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" value="79" class="calc-checkbox w-4 h-4 rounded text-cyber-cyan focus:ring-0 bg-cyber-black border-cyber-border" onchange="calculateTotal()">
+                            <span class="text-xs sm:text-sm text-slate-200 font-medium">SSD Upgrade / Drive Clone</span>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-cyber-cyan">$79</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-cyber-border bg-cyber-dark/60 hover:border-cyber-cyan/50 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" value="89" class="calc-checkbox w-4 h-4 rounded text-cyber-cyan focus:ring-0 bg-cyber-black border-cyber-border" onchange="calculateTotal()">
+                            <span class="text-xs sm:text-sm text-slate-200 font-medium">Data Migration / Backup</span>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-cyber-cyan">$89</span>
+                    </label>
+
+                    <label class="flex items-center justify-between p-3.5 rounded-xl border border-cyber-border bg-cyber-dark/60 hover:border-cyber-cyan/50 cursor-pointer transition-colors">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" value="169" class="calc-checkbox w-4 h-4 rounded text-cyber-cyan focus:ring-0 bg-cyber-black border-cyber-border" onchange="calculateTotal()">
+                            <span class="text-xs sm:text-sm text-slate-200 font-medium">Complete PC Build Assembly</span>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-cyber-cyan">$169</span>
+                    </label>
+                </div>
+
+                <!-- Calculator Result Footer -->
+                <div class="mt-8 pt-6 border-t border-cyber-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <div class="text-xs font-mono text-slate-400">ESTIMATED TOTAL (LABOR):</div>
+                        <div class="font-tech text-3xl font-black text-cyber-mint" id="calc-total">$0</div>
+                        <div class="text-[11px] text-slate-500 font-mono">*Diagnostic is credited towards repairs. Excludes parts/sales tax.</div>
+                    </div>
+                    <a href="#contact" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-mint text-cyber-black font-tech font-bold text-xs uppercase tracking-wider hover:opacity-95 shadow-neon-cyan transition-all">
+                        Lock In This Rate →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Left: Contact Placeholders & Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-cyber-cyan font-mono text-xs tracking-widest uppercase bg-cyber-cyan/10 px-3 py-1 rounded-full border border-cyber-cyan/30">Get In Touch</span>
+                        <h2 class="font-tech text-3xl sm:text-4xl font-black text-white mt-3 uppercase">Book Mobile Service</h2>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            Have an urgent hardware malfunction or need an on-site evaluation? Call or submit the form to reserve a technician dispatch window.
+                        </p>
+                    </div>
+
+                    <!-- Direct Contact Placeholders -->
+                    <div class="space-y-4 pt-2">
+                        <div class="p-4 rounded-xl bg-cyber-card border border-cyber-border flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-[11px] font-mono text-slate-400 uppercase">Call / SMS Hotline</div>
+                                <a href="tel:2815550199" class="text-white font-mono text-sm sm:text-base font-bold hover:text-cyber-cyan transition-colors">(281) 555-0199</a>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-cyber-card border border-cyber-border flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-cyber-mint/10 border border-cyber-mint/40 flex items-center justify-center text-cyber-mint shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-[11px] font-mono text-slate-400 uppercase">Direct Email</div>
+                                <a href="mailto:contact@netrunnerpc.com" class="text-white font-mono text-sm sm:text-base font-bold hover:text-cyber-cyan transition-colors">contact@netrunnerpc.com</a>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-cyber-card border border-cyber-border flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-cyber-cyan/10 border border-cyber-cyan/40 flex items-center justify-center text-cyber-cyan shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-[11px] font-mono text-slate-400 uppercase">Operating Hours</div>
+                                <div class="text-white font-mono text-sm">Mon – Sat: 8:00 AM – 7:00 PM <span class="text-xs text-cyber-mint">(Sun: Emergency Call)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Service Request Form -->
+                <div class="lg:col-span-7">
+                    <div class="cyber-border-gradient rounded-3xl p-6 sm:p-8 bg-cyber-card">
+                        <h3 class="font-tech text-xl font-bold text-white mb-6 uppercase flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-cyber-cyan"></span>
+                            Request Service Dispatch
+                        </h3>
+
+                        <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">Your Full Name *</label>
+                                    <input type="text" required placeholder="Alex Mercer" class="w-full px-4 py-2.5 rounded-xl bg-cyber-dark border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-cyan font-sans">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">Phone Number *</label>
+                                    <input type="tel" required placeholder="(281) 000-0000" class="w-full px-4 py-2.5 rounded-xl bg-cyber-dark border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-cyan font-sans">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">ZIP Code (Cypress/Houston) *</label>
+                                    <input type="text" required placeholder="77429" maxlength="5" class="w-full px-4 py-2.5 rounded-xl bg-cyber-dark border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-cyan font-sans">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-mono text-slate-400 mb-1">Device Type</label>
+                                    <select class="w-full px-4 py-2.5 rounded-xl bg-cyber-dark border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-cyan font-sans">
+                                        <option value="desktop">Desktop PC / Tower</option>
+                                        <option value="laptop">Windows Laptop</option>
+                                        <option value="custom">Custom Gaming Rig</option>
+                                        <option value="mac">Apple Mac / MacBook</option>
+                                        <option value="network">Home/Small Office Network</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1">Issue Description / Symptoms</label>
+                                <textarea rows="3" placeholder="Explain what is happening (e.g., won't turn on, constant bluescreens, slow startup, need parts assembled)..." class="w-full px-4 py-2.5 rounded-xl bg-cyber-dark border border-cyber-border text-white text-sm focus:outline-none focus:border-cyber-cyan font-sans"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-mint text-cyber-black font-tech font-bold text-sm uppercase tracking-wider hover:opacity-90 shadow-neon-cyan transition-all">
+                                Send Service Inquiry
+                            </button>
+
+                            <div id="form-feedback" class="hidden p-3 rounded-lg text-xs font-mono text-center border border-cyber-mint/40 bg-cyber-mint/10 text-cyber-mint mt-2">
+                                ✓ Request received! A Netrunner technician will text or call you within 30 minutes to confirm your diagnostic window.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-cyber-border bg-cyber-black py-10 text-xs font-mono text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p class="text-slate-400 font-semibold">Netrunner Mobile Computer Repair LLC</p>
+                <p class="mt-1">Serving Cypress, TX (77429 / 77433) & surrounding Greater Houston areas.</p>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="#pricing" class="hover:text-cyber-cyan transition-colors">Pricing</a>
+                <a href="#calculator" class="hover:text-cyber-cyan transition-colors">Estimator</a>
+                <a href="#contact" class="hover:text-cyber-cyan transition-colors">Book Dispatch</a>
+            </div>
+            <div>
+                <p>&copy; <span id="current-year">2026</span> Netrunner LLC. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set Year dynamically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Service Category Filter Logic
+        function filterServices(category) {
+            const cards = document.querySelectorAll('.service-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Reset buttons style
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-cyber-cyan', 'text-cyber-black', 'font-bold');
+                btn.classList.add('bg-cyber-card', 'text-slate-300');
+            });
+
+            // Activate chosen button
+            const activeBtn = document.getElementById(`filter-${category}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-cyber-card', 'text-slate-300');
+                activeBtn.classList.add('bg-cyber-cyan', 'text-cyber-black', 'font-bold');
+            }
+
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Live Cost Estimator Logic
+        function calculateTotal() {
+            const checkboxes = document.querySelectorAll('.calc-checkbox:checked');
+            let total = 0;
+            checkboxes.forEach(cb => {
+                total += parseFloat(cb.value);
+            });
+            document.getElementById('calc-total').textContent = `$${total}`;
+        }
+
+        // Booking Form Submission Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const feedback = document.getElementById('form-feedback');
+            feedback.classList.remove('hidden');
+            setTimeout(() => {
+                feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
